@@ -1,0 +1,44 @@
+const rootElement = document.getElementById('root');
+
+const element = (
+<div className='container'>
+  <div>Hello World!</div>
+  <div>Hello World!</div> //This repetition seems unnecessary
+</div>
+  );
+
+ReactDOM.render(element,rootElement);
+----------------------------------------------------------
+const rootElement = document.getElementById('root');
+const helloWorld = <div>Hello World!</div>;
+const element = (
+<div className='container'>
+  {helloWorld} //That's better!
+  {helloWorld}
+</div>
+  );
+
+ReactDOM.render(element,rootElement);
+-------------------------------------------------------
+const rootElement = document.getElementById('root');
+const helloWorld = (props) => <div>{props.msg}</div>;
+const element = (
+<div className='container'>
+  {helloWorld}
+  {helloWorld}
+</div>
+  );
+
+ReactDOM.render(element,rootElement);
+-----------------------------------------------------
+const rootElement = document.getElementById('root');
+const message = props => <div>{props.msg}</div>; //Create a function to paramaterize the message code for the divs
+//We want to be able to use the same variable 'message' to produce different message output
+const element = (
+<div className='container'>
+  {message({msg: 'Hello World!'})} //We update the value of the 'msg' property on the recently created 'props' object to show our desired message in the div
+  {message({msg: 'Goodbye World!'})}
+</div>
+  );
+
+ReactDOM.render(element,rootElement);
