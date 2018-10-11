@@ -24,8 +24,9 @@ const element = (
 ReactDOM.render(element,rootElement);
 --------------------------------------------------------
 const rootElement = document.getElementById('root');
-const message = props => <div>{props.children}</div>; //Changing the property to 'children' lets us write text in div's like in HTML
-const Message = props => <div>{props.children}</div>; //The 'children' property value is whatever we find between the <div>...</div> tags
+
+const Message = props => <div>{props.children}</div>; //Changing the property to 'children' lets us write text in div's like in HTML
+//The 'children' property value is whatever we find between the <div>...</div> tags
 const element = (
 <div className='container'>
   <Message> //This is how we use the component in JSX syntax to set the 'children' property of 'Message'
