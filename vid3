@@ -37,7 +37,7 @@ const props = {                 //Adding a props object that will have the class
   children: 'Hello World!'
 };
 const element = <div {...props}/>; //Passing those props to the div via the element variable using the spread operator
-
+//Props just take the place of all the HTML attributes in the HTML element you pass them to***
 ReactDOM.render(element,rootElement);
 ---------------------------------------------------------------
 const rootElement = document.getElementById('root');
