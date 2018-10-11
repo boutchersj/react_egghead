@@ -1,0 +1,40 @@
+const rootElement = document.getElementById('root');
+const message = props => <div>{props.msg}</div>;
+const element = (
+<div className='container'>
+  {React.createElement(message, {msg: 'Hello World!'})} //This is the most basic way of using React to rewrite this part
+  //The 'React.createElement()' method takes the function 'message' as an argument, plus this props we want to pass to the element we're creating ('msg')
+  {message({msg: 'Goodbye World!'})}
+</div>
+  );
+
+ReactDOM.render(element,rootElement);
+--------------------------------------------------------
+const rootElement = document.getElementById('root');
+const message = props => <div>{props.msg}</div>; //original variable (used for 'Goodbye World!')
+const Message = props => <div>{props.msg}</div>; //Babel will read this as a component when it transpiles, so we can use JSX syntax to render it
+//Component/class syntax requires us to capitalize the identifier so Babel can read it appropriately during transpilation
+const element = (
+<div className='container'>
+  <Message msg='Hello World!' /> //This syntax renders Message as a component with the same result as the previous methods
+  {React.createElement(message,{msg: 'Goodbye World!'})} //This syntax renders as an element
+</div>
+  );
+
+ReactDOM.render(element,rootElement);
+--------------------------------------------------------
+const rootElement = document.getElementById('root');
+const message = props => <div>{props.children}</div>; //Changing the property to 'children' lets us write text in div's like in HTML
+const Message = props => <div>{props.children}</div>; //The 'children' property value is whatever we find between the <div>...</div> tags
+const element = (
+<div className='container'>
+  <Message> //This is how we use the component in JSX syntax to set the 'children' property of 'Message'
+  Hello World! //'Hello World!' is between the <Message>...</Message> tags, so it is the 'children' property value
+  <Message>
+  Goodbye World! //Doing this makes it easy to write readable, familiar HTML-esque code
+  </Message>
+  </Message> //It's also key to understanding how components work in React, and how they make it easy to reuse HTML code throughout your app
+</div>
+  );
+
+ReactDOM.render(element,rootElement);
