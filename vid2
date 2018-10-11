@@ -1,0 +1,15 @@
+const rootElement = document.getElementById('root');
+
+/*const element = document.createElement('div');*/
+
+const element = React.createElement('div', {className: 'container'}, 'Hello World!');
+
+/*element.textContent = 'Hello World!';
+element.className = 'container';
+rootElement.appendChild(element);*/
+
+ReactDOM.render(element,rootElement);
+
+
+//The commented code gets replaced by the uncommented code
+//They both say the same thing, but the new version uses the React 'createElement' API
