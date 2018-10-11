@@ -4,3 +4,79 @@ const element = <div className='container'>Hello World!</div>; //Switched to JSX
 
 ReactDOM.render(element,rootElement);
 
+------------------------------------------------------
+const rootElement = document.getElementById('root');
+
+const content = 'Hello World!'; //Storing the string in a variable instead
+const element = <div className='container'>{content}</div>; //Using the variable to represent the string
+
+ReactDOM.render(element,rootElement);
+----------------------------------------------------------------
+const rootElement = document.getElementById('root');
+
+const content = 'Hello World!';
+const element = <div className='container'>{(()=>content)()}</div>; //Anything can go in the braces, including IIFE's, as long as it evaluates to an expression
+
+ReactDOM.render(element,rootElement);
+--------------------------------------------------------------
+const rootElement = document.getElementById('root');
+
+const myClassName = 'container'; //Creating another variable to take the place of a string
+const content = 'Hello World!';
+const element = <div className={myClassName}>{(()=>content)()}</div>; //myClassName represents the 'container' class here
+
+ReactDOM.render(element,rootElement);
+----------------------------------------------------------------
+const rootElement = document.getElementById('root');
+
+
+const myClassName = 'container';
+const content = 'Hello World!';
+const props = {                 //Adding a props object that will have the className and content from the div we just made
+  className: 'container',
+  children: 'Hello World!'
+};
+const element = <div {...props}/>; //Passing those props to the div via the element variable using the spread operator
+
+ReactDOM.render(element,rootElement);
+---------------------------------------------------------------
+const rootElement = document.getElementById('root');
+
+
+const myClassName = 'container';
+const content = 'Hello World!';
+const props = {
+  className: 'container',
+  children: 'Hello World!'
+};
+const element = <div className ="my-class" {...props}/>; //If you define a prop you're gonna get from props before props is passed, it'll get overwritten by props' version
+//Here, className still ends up being 'container'
+ReactDOM.render(element,rootElement);
+---------------------------------------------------------------
+const rootElement = document.getElementById('root');
+
+
+const myClassName = 'container';
+const content = 'Hello World!';
+const props = {
+  className: 'container',
+  children: 'Hello World!'
+};
+const element = <div {...props} className ="my-class"/>; //If you define the prop after props gives it to you, your version overwrites props' version
+
+ReactDOM.render(element,rootElement);
+
+//Here, className becomes 'my-class'
+-------------------------------------------------------------
+const rootElement = document.getElementById('root');
+
+
+const myClassName = 'container';
+const content = 'Hello World!';
+const props = {
+  className: 'container',
+  children: 'Hello World!'
+};
+const element = <div {...props}>Hi There!</div>; //'Hi There' overwrites the 'children' property in the 'props' passed to 'element'
+
+ReactDOM.render(element,rootElement);
